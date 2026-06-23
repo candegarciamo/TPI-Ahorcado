@@ -1,0 +1,24 @@
+{
+  "name": "TPI-Ahorcado",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "jest",
+    "at": "bddgen && playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.5",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.4.2",
+    "playwright-bdd": "^9.2.0",
+    "ts-jest": "^29.4.11",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.0"
+  }
+}
