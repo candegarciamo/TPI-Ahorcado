@@ -7,6 +7,12 @@ describe('Ahorcado - Iniciar Partida', () => {
     // @ts-ignore - Ignoramos el chequeo de tipos para poder correr el test y verlo fallar (ROJO)
     expect(juego.vidas()).toBe(6);
   });
+
+  it('Al inicializar un juego con la palabra "GATO", la palabra enmascarada devuelta debe ser "_ _ _ _"', () => {
+    const juego = new Ahorcado('GATO');
+    // @ts-ignore - Ignoramos el chequeo para ver el ROJO real por falta del método
+    expect(juego.palabraEnmascarada()).toBe('_ _ _ _');
+  });
 });
 
 
