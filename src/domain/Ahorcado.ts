@@ -6,7 +6,7 @@ export class Ahorcado {
   }
 
   palabraEnmascarada(): string {
-    return "_ _ _ _";
+    return this.palabraSecreta.split('').map(() => '_').join(' ');
   }
 }
 
