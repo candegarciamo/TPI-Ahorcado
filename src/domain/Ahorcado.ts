@@ -1,5 +1,7 @@
 export class Ahorcado {
-  constructor(private palabraSecreta: string) { }
+  private letras: string[] = [];
+
+  constructor(private palabraSecreta: string) {}
 
   vidas(): number {
     return 6;
@@ -7,5 +9,9 @@ export class Ahorcado {
 
   palabraEnmascarada(): string {
     return this.palabraSecreta.split('').map(() => '_').join(' ');
+  }
+
+  letrasAdivinadas(): string[] {
+    return this.letras;
   }
 }
