@@ -9,5 +9,3 @@ export class Ahorcado {
     return this.palabraSecreta.split('').map(() => '_').join(' ');
   }
 }
-
-

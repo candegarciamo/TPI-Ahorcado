@@ -18,6 +18,12 @@ describe('Ahorcado - Iniciar Partida', () => {
     const juego = new Ahorcado('ALA');
     expect(juego.palabraEnmascarada()).toBe('_ _ _');
   });
+
+  it('El juego debe guardar el estado inicial (sin letras adivinadas aún)', () => {
+    const juego = new Ahorcado('GATO');
+    // @ts-ignore - Ignoramos el chequeo para ver el ROJO real por falta del método
+    expect(juego.letrasAdivinadas()).toEqual([]);
+  });
 });
 
 
