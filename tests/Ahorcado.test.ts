@@ -13,6 +13,11 @@ describe('Ahorcado - Iniciar Partida', () => {
     // @ts-ignore - Ignoramos el chequeo para ver el ROJO real por falta del método
     expect(juego.palabraEnmascarada()).toBe('_ _ _ _');
   });
+
+  it('Al inicializar un juego con una palabra de distinta longitud (ej. "ALA"), la palabra enmascarada debe tener la longitud correcta ("_ _ _")', () => {
+    const juego = new Ahorcado('ALA');
+    expect(juego.palabraEnmascarada()).toBe('_ _ _');
+  });
 });
 
 
