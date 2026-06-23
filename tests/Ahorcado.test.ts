@@ -3,7 +3,6 @@ import { Ahorcado } from '../src/domain/Ahorcado';
 describe('Ahorcado - Iniciar Partida', () => {
   it('Al inicializar un juego, las vidas iniciales deben ser 6', () => {
     const juego = new Ahorcado('GATO');
-
     // @ts-ignore - Ignoramos el chequeo de tipos para poder correr el test y verlo fallar (ROJO)
     expect(juego.vidas()).toBe(6);
   });
@@ -23,6 +22,15 @@ describe('Ahorcado - Iniciar Partida', () => {
     const juego = new Ahorcado('GATO');
     // @ts-ignore - Ignoramos el chequeo para ver el ROJO real por falta del método
     expect(juego.letrasAdivinadas()).toEqual([]);
+  });
+});
+
+describe('Ahorcado - Adivinar letra correcta', () => {
+  it('Al adivinar una letra presente, se deben revelar todas sus ocurrencias en la palabra enmascarada', () => {
+    const juego = new Ahorcado('ALA');
+    // @ts-ignore
+    juego.adivinar('A');
+    expect(juego.palabraEnmascarada()).toBe('A _ A');
   });
 });
 
