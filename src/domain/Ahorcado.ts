@@ -4,6 +4,10 @@ export class Ahorcado {
   vidas(): number {
     return 6;
   }
+
+  palabraEnmascarada(): string {
+    return "_ _ _ _";
+  }
 }
 
 
