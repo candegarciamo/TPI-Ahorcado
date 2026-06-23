@@ -1,12 +1,17 @@
 export class Ahorcado {
+  private letras: string[] = [];
+
   constructor(private palabraSecreta: string) { }
 
-  // Métodos básicos para que no falle todo al inicio
-  adivinar(letra: string): void {
-    // A implementar
+  vidas(): number {
+    return 6;
   }
 
   palabraEnmascarada(): string {
     return this.palabraSecreta.split('').map(() => '_').join(' ');
+  }
+
+  letrasAdivinadas(): string[] {
+    return this.letras;
   }
 }
