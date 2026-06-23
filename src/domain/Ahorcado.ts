@@ -1,5 +1,5 @@
 export class Ahorcado {
-  constructor(private palabraSecreta: string) {}
+  constructor(private palabraSecreta: string) { }
 
   // Métodos básicos para que no falle todo al inicio
   adivinar(letra: string): void {
