@@ -10,3 +10,4 @@ Característica: Ganar partida
     Y el jugador adivina la letra "X"
     Entonces se ven 6 vidas
     Y se ve la palabra "G A T O"
+    Y se ve el mensaje "GANASTE"

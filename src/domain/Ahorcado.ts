@@ -37,10 +37,16 @@ export class Ahorcado {
   }
 
   estado(): string {
-    return 'GANADO';
+    if (!this.palabraEnmascarada().includes('_')) {
+      return 'GANADO';
+    }
+    return 'JUGANDO';
   }
 
   mensaje(): string {
-    return 'GANASTE';
+    if (this.estado() === 'GANADO') {
+      return 'GANASTE';
+    }
+    return '';
   }
 }
