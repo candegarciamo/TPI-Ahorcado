@@ -21,3 +21,6 @@ Then("se ven {int} vidas", async ({ page }, vidas: number) => {
   await expect(page.getByTestId("lives")).toHaveText(String(vidas));
 });
 
+Then("se ve la letra errada {string}", async ({ page }, letra: string) => {
+  await expect(page.getByTestId("missed-letters")).toContainText(letra);
+});
