@@ -55,12 +55,18 @@ describe('Ahorcado - Adivinar letra correcta', () => {
   });
 });
 
-
 describe('Ahorcado - Fallar letra', () => {
   it('Adivinar una letra ausente en la palabra descuenta 1 vida', () => {
     const juego = new Ahorcado('GATO');
     // @ts-ignore
     juego.adivinar('E');
     expect(juego.vidas()).toBe(5);
+  });
+
+  it('La palabra enmascarada no se modifica tras un fallo', () => {
+    const juego = new Ahorcado('GATO');
+    // @ts-ignore
+    juego.adivinar('E');
+    expect(juego.palabraEnmascarada()).toBe('_ _ _ _');
   });
 });
