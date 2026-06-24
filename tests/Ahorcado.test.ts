@@ -39,6 +39,13 @@ describe('Ahorcado - Adivinar letra correcta', () => {
     juego.adivinar('a');
     expect(juego.palabraEnmascarada()).toBe('A _ A');
   });
+
+  it('La palabra enmascarada se representa bien (guiones para lo oculto)', () => {
+    const juego = new Ahorcado('GATO');
+    // @ts-ignore
+    juego.adivinar('T');
+    expect(juego.palabraEnmascarada()).toBe('_ _ T _');
+  });
 });
 
 
