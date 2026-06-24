@@ -109,4 +109,34 @@ describe('Ahorcado - Ganar', () => {
     // @ts-ignore - Ignoramos el chequeo para ver el rojo por falta del método
     expect(juego.estado()).toBe('GANADO');
   });
+  it('Al ganar el juego, se debe devolver el mensaje "GANASTE"', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('G');
+    juego.adivinar('A');
+    juego.adivinar('T');
+    juego.adivinar('O');
+    // @ts-ignore - Ignoramos para ver el rojo por falta del método
+    expect(juego.mensaje()).toBe('GANASTE');
+  });
+
+  it('Al completarse la palabra, la versión enmascarada debe coincidir con la palabra original (no quedan guiones)', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('G');
+    juego.adivinar('A');
+    juego.adivinar('T');
+    juego.adivinar('O');
+    expect(juego.palabraEnmascarada()).toBe('G A T O');
+  });
+
+  it('Una vez que el juego está ganado, cualquier intento adicional de adivinar letras debe ser ignorado', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('G');
+    juego.adivinar('A');
+    juego.adivinar('T');
+    juego.adivinar('O');
+    // Intentar adivinar una letra incorrecta después de ganar
+    juego.adivinar('X');
+    // Las vidas no deberían descontarse
+    expect(juego.vidas()).toBe(6);
+  });
 });
