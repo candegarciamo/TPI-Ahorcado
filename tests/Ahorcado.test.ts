@@ -86,4 +86,13 @@ describe('Ahorcado - Fallar letra', () => {
     juego.adivinar('E');
     expect(juego.vidas()).toBe(5);
   });
+  it('Lista las letras erradas de forma separada', () => {
+    const juego = new Ahorcado('GATO');
+    // @ts-ignore
+    juego.adivinar('E');
+    // @ts-ignore
+    juego.adivinar('X');
+    // @ts-ignore - Ignoramos para ver el rojo por falta de método
+    expect(juego.letrasErradas()).toEqual(['E', 'X']);
+  });
 });
