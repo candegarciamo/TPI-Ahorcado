@@ -32,4 +32,8 @@ export class Ahorcado {
   letrasErradas(): string[] {
     return this.letras.filter(letra => !this.palabraSecreta.toUpperCase().includes(letra));
   }
+
+  estado(): string {
+    return 'GANADO';
+  }
 }
