@@ -46,6 +46,13 @@ describe('Ahorcado - Adivinar letra correcta', () => {
     juego.adivinar('T');
     expect(juego.palabraEnmascarada()).toBe('_ _ T _');
   });
+
+  it('La letra acertada no descuenta vidas', () => {
+    const juego = new Ahorcado('GATO');
+    // @ts-ignore
+    juego.adivinar('A');
+    expect(juego.vidas()).toBe(6);
+  });
 });
 
 
