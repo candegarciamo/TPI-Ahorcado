@@ -28,4 +28,8 @@ export class Ahorcado {
   letrasAdivinadas(): string[] {
     return this.letras;
   }
+
+  letrasErradas(): string[] {
+    return this.letras.filter(letra => !this.palabraSecreta.toUpperCase().includes(letra));
+  }
 }
