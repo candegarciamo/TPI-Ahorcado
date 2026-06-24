@@ -69,4 +69,13 @@ describe('Ahorcado - Fallar letra', () => {
     juego.adivinar('E');
     expect(juego.palabraEnmascarada()).toBe('_ _ _ _');
   });
+
+  it('El fallo es case-insensitive (intentar `e` o `E` es el mismo fallo y descuenta 1 sola vida)', () => {
+    const juego = new Ahorcado('GATO');
+    // @ts-ignore
+    juego.adivinar('e');
+    // @ts-ignore
+    juego.adivinar('E');
+    expect(juego.vidas()).toBe(5);
+  });
 });
