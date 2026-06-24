@@ -98,3 +98,15 @@ describe('Ahorcado - Fallar letra', () => {
     expect(juego.letrasErradas()).toEqual(['E', 'X']);
   });
 });
+
+describe('Ahorcado - Ganar', () => {
+  it('Adivinar la última letra faltante cambia el estado del juego a "GANADO"', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('G');
+    juego.adivinar('A');
+    juego.adivinar('T');
+    juego.adivinar('O');
+    // @ts-ignore - Ignoramos el chequeo para ver el rojo por falta del método
+    expect(juego.estado()).toBe('GANADO');
+  });
+});
