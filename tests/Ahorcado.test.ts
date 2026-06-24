@@ -32,6 +32,13 @@ describe('Ahorcado - Adivinar letra correcta', () => {
     juego.adivinar('A');
     expect(juego.palabraEnmascarada()).toBe('A _ A');
   });
+
+  it('La comparación de letras debe ser case-insensitive (minúsculas coinciden con mayúsculas)', () => {
+    const juego = new Ahorcado('ALA');
+    // @ts-ignore
+    juego.adivinar('a');
+    expect(juego.palabraEnmascarada()).toBe('A _ A');
+  });
 });
 
 
