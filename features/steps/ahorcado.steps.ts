@@ -24,3 +24,7 @@ Then("se ven {int} vidas", async ({ page }, vidas: number) => {
 Then("se ve la letra errada {string}", async ({ page }, letra: string) => {
   await expect(page.getByTestId("missed-letters")).toContainText(letra);
 });
+
+Then("se ve el mensaje {string}", async ({ page }, mensaje: string) => {
+  await expect(page.getByTestId("status")).toHaveText(mensaje);
+});

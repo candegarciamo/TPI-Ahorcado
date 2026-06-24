@@ -19,3 +19,10 @@ AT - 3 - Fallar Letra
   3 - el fallo es case-insensitive (intentar `x` o `X` es el mismo fallo)
   4 - no permite adivinar la misma letra incorrecta otra vez (no suma fallos extra)
   5 - lista la letra errada
+
+AT - 4 - Ganar (Completa todas las letras → ve mensaje "GANASTE")
+  UT:
+  1 - Adivinar la última letra faltante cambia el estado del juego a "GANADO" (o equivalente).
+  2 - Al ganar el juego, se debe mostrar o devolver el mensaje "GANASTE".
+  3 - Al completarse la palabra, la versión enmascarada debe coincidir con la palabra original (no quedan guiones).
+  4 - Una vez que el juego está ganado, cualquier intento adicional de adivinar letras debe ser ignorado.
