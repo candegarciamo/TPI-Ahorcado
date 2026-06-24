@@ -9,6 +9,9 @@ export class Ahorcado {
   }
 
   adivinar(letra: string): void {
+    if (!this.palabraEnmascarada().includes('_')) {
+      return;
+    }
     const letraUpper = letra.toUpperCase();
     if (!this.letras.includes(letraUpper)) {
       this.letras.push(letraUpper);
@@ -35,5 +38,9 @@ export class Ahorcado {
 
   estado(): string {
     return 'GANADO';
+  }
+
+  mensaje(): string {
+    return 'GANASTE';
   }
 }
