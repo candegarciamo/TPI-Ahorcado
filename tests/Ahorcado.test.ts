@@ -245,4 +245,13 @@ describe('Ahorcado - Letra repetida', () => {
 
     expect(juego.vidas()).toBe(6);
   });
+
+  it('UT2 - Al reintentar una letra ya acertada, no debe cambiar la palabra enmascarada', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('A');
+    expect(juego.palabraEnmascarada()).toBe('_ A _ _');
+
+    juego.adivinar('A');
+    expect(juego.palabraEnmascarada()).toBe('_ A _ _');
+  });
 });
