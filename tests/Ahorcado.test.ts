@@ -236,3 +236,13 @@ describe('Ahorcado - Entrada inválida', () => {
     expect(juego.error()).toBe('Caracter invalido');
   });
 });
+
+describe('Ahorcado - Letra repetida', () => {
+  it('UT1 - Al reintentar una letra ya acertada, no se deben modificar las vidas.', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('A');
+    juego.adivinar('A');
+
+    expect(juego.vidas()).toBe(6);
+  });
+});
