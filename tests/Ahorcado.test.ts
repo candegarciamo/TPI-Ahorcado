@@ -159,7 +159,7 @@ describe('Ahorcado - Perder', () => {
     juego.adivinar('R');
     juego.adivinar('Y');
     juego.adivinar('U');
-    
+
     expect(juego.estado()).toBe('PERDIDO');
   });
 
@@ -171,7 +171,7 @@ describe('Ahorcado - Perder', () => {
     juego.adivinar('R');
     juego.adivinar('Y');
     juego.adivinar('U');
-    
+
     expect(juego.mensaje()).toBe('PERDISTE');
   });
 
@@ -183,7 +183,7 @@ describe('Ahorcado - Perder', () => {
     juego.adivinar('R');
     juego.adivinar('Y');
     juego.adivinar('U');
-    
+
     expect(juego.palabraEnmascarada()).toBe('G A T O');
   });
 
@@ -195,7 +195,7 @@ describe('Ahorcado - Perder', () => {
     juego.adivinar('R');
     juego.adivinar('Y');
     juego.adivinar('U');
-    
+
     juego.adivinar('I');
     expect(juego.vidas()).toBe(0);
   });
@@ -208,7 +208,40 @@ describe('Ahorcado - Perder', () => {
     juego.adivinar('R');
     juego.adivinar('Y');
     juego.adivinar('U');
-    
+
     expect(juego.vidas()).toBe(0);
+  });
+});
+
+describe('Ahorcado - Entrada inválida', () => {
+  it('UT1 - Al intentar ingresar algo que no es una letra, no se deben modificar las vidas', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('3');
+    expect(juego.vidas()).toBe(6);
+  });
+
+  it('UT2 - Al intentar ingresar algo que no es una letra, la palabra enmascarada debe permanecer igual', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('3');
+    expect(juego.palabraEnmascarada()).toBe('_ _ _ _');
+  });
+
+  it('UT3 - Al intentar ingresar algo que no es una letra, la letra ingresada debe ser ignorada', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('!');
+    // El estado sigue siendo JUGANDO: el carácter no fue procesado
+    expect(juego.estado()).toBe('JUGANDO');
+  });
+
+  it('UT4 - Al intentar ingresar algo que no es una letra, no se deben modificar las letras adivinadas', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('3');
+    expect(juego.letrasAdivinadas()).toEqual([]);
+  });
+
+  it('UT5 - Al intentar ingresar algo que no es una letra, se debe mostrar un mensaje de error', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('3')
+    expect(juego.error()).toBe('Caracter invalido');
   });
 });
