@@ -140,3 +140,17 @@ describe('Ahorcado - Ganar', () => {
     expect(juego.vidas()).toBe(6);
   });
 });
+
+describe('Ahorcado - Perder', () => {
+  it('Al fallar 6 veces, el estado del juego cambia a "PERDIDO"', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('Q');
+    juego.adivinar('W');
+    juego.adivinar('E');
+    juego.adivinar('R');
+    juego.adivinar('Y');
+    juego.adivinar('U');
+    
+    expect(juego.estado()).toBe('PERDIDO');
+  });
+});
