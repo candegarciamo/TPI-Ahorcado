@@ -35,3 +35,11 @@ AT - 5 - Perder (6 fallos → ve "PERDISTE" y la palabra revelada)
   3 - Al perder, la palabra revelada debe mostrarse completa (sin guiones).
   4 - Una vez que el juego está perdido, cualquier intento adicional de adivinar letras debe ser ignorado (no descuenta más vidas).
   5 - Al perder, las vidas deben ser exactamente 0.
+
+AT - 7 - Entrada inválida (Tipea algo que no es letra, o juega con la partida terminada)
+  UT:
+  1 - Al intentar ingresar algo que no es una letra, no se deben modificar las vidas.
+  2 - Al intentar ingresar algo que no es una letra, la palabra enmascarada debe permanecer igual.
+  3 - Al intentar ingresar algo que no es una letra, la letra ingresada debe ser ignorada.
+  4 - Al intentar ingresar algo que no es una letra, no se deben modificar las letras adivinadas.
+  5 - Al intentar ingresar algo que no es una letra, se debe mostrar un mensaje de error
