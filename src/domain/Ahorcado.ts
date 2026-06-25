@@ -9,6 +9,9 @@ export class Ahorcado {
   }
 
   adivinar(letra: string): void {
+    if (letra.length !== 1) {
+      return;
+    }
     if (!this.palabraEnmascarada().includes('_')) {
       return;
     }
