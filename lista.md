@@ -17,9 +17,8 @@ AT - 3 - Fallar Letra
   1 - adivinar una letra ausente en la palabra descuenta 1 vida (ej. de 6 pasa a 5)
   2 - la palabra enmascarada no se modifica tras un fallo
   3 - el fallo es case-insensitive (intentar `x` o `X` es el mismo fallo)
-  4 - no permite adivinar la misma letra incorrecta otra vez (no suma fallos extra)
-  5 - lista la letra errada
-  6 - solo se puede ingresar una letra
+  4 - lista la letra errada
+  5 - solo se puede ingresar una letra
 
 AT - 4 - Ganar (Completa todas las letras → ve mensaje "GANASTE")
   UT:
@@ -35,6 +34,14 @@ AT - 5 - Perder (6 fallos → ve "PERDISTE" y la palabra revelada)
   3 - Al perder, la palabra revelada debe mostrarse completa (sin guiones).
   4 - Una vez que el juego está perdido, cualquier intento adicional de adivinar letras debe ser ignorado (no descuenta más vidas).
   5 - Al perder, las vidas deben ser exactamente 0.
+
+AT - 6 - Letra repetida (Re-tipea una letra ya intentada → no penaliza e informa)
+  UT:
+  1 - Al reintentar una letra ya acertada, no se deben modificar las vidas.
+  2 - Al reintentar una letra ya acertada, no debe cambiar la palabra enmascarada.
+  3 - Al reintentar una letra ya fallada, no se deben modificar las letras adivinadas.
+  4 - Al reintentar una letra ya fallada, no la agrega dos veces a la lista de letras erradas.
+  5 - Al reintentar una letra ya usada, se debe mostrar un mensaje de error (ej: "Ya intentaste esa letra").
 
 AT - 7 - Entrada inválida (Tipea algo que no es letra, o juega con la partida terminada)
   UT:

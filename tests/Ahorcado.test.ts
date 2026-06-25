@@ -79,15 +79,6 @@ describe('Ahorcado - Fallar letra', () => {
     expect(juego.vidas()).toBe(5);
   });
 
-  it('No permite adivinar la misma letra incorrecta otra vez (no suma fallos extra)', () => {
-    const juego = new Ahorcado('GATO');
-    // @ts-ignore
-    juego.adivinar('E');
-    // @ts-ignore
-    juego.adivinar('E');
-    expect(juego.vidas()).toBe(5);
-  });
-
   it('Lista las letras erradas de forma separada', () => {
     const juego = new Ahorcado('GATO');
     // @ts-ignore
