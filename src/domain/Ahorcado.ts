@@ -1,6 +1,7 @@
 export class Ahorcado {
   private letras: string[] = [];
   private _vidas: number = 6;
+  private _error: string = "";
 
   constructor(private palabraSecreta: string) { }
 
@@ -9,10 +10,12 @@ export class Ahorcado {
   }
 
   adivinar(letra: string): void {
-    if (letra.length !== 1) {
+    if (letra.length !== 1 || !(/^[a-zA-Z]+$/.test(letra))) {
+      this._error = "Caracter invalido";
       return;
     }
     if (!this.palabraEnmascarada().includes('_')) {
+      this._error = "Juego terminado";
       return;
     }
     const letraUpper = letra.toUpperCase();
@@ -22,6 +25,7 @@ export class Ahorcado {
         this._vidas--;
       }
     }
+    this._error = "";
   }
 
   palabraEnmascarada(): string {
@@ -60,5 +64,9 @@ export class Ahorcado {
       return 'PERDISTE';
     }
     return '';
+  }
+
+  error(): string {
+    return this._error;
   }
 }
