@@ -28,3 +28,7 @@ Then("se ve la letra errada {string}", async ({ page }, letra: string) => {
 Then("se ve el mensaje {string}", async ({ page }, mensaje: string) => {
   await expect(page.getByTestId("status")).toHaveText(mensaje);
 });
+
+Then("se ve el error {string}", async ({ page }, error: string) => {
+  await expect(page.getByTestId("error")).toHaveText(error);
+});
