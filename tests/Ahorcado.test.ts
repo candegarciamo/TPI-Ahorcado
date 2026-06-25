@@ -165,4 +165,16 @@ describe('Ahorcado - Perder', () => {
     
     expect(juego.mensaje()).toBe('PERDISTE');
   });
+
+  it('Al perder, la palabra revelada debe mostrarse completa (sin guiones)', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('Q');
+    juego.adivinar('W');
+    juego.adivinar('E');
+    juego.adivinar('R');
+    juego.adivinar('Y');
+    juego.adivinar('U');
+    
+    expect(juego.palabraEnmascarada()).toBe('G A T O');
+  });
 });
