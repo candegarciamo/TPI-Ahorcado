@@ -153,4 +153,16 @@ describe('Ahorcado - Perder', () => {
     
     expect(juego.estado()).toBe('PERDIDO');
   });
+
+  it('Al perder, el método mensaje() devuelve "PERDISTE"', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('Q');
+    juego.adivinar('W');
+    juego.adivinar('E');
+    juego.adivinar('R');
+    juego.adivinar('Y');
+    juego.adivinar('U');
+    
+    expect(juego.mensaje()).toBe('PERDISTE');
+  });
 });
