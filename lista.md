@@ -26,3 +26,11 @@ AT - 4 - Ganar (Completa todas las letras → ve mensaje "GANASTE")
   2 - Al ganar el juego, se debe mostrar o devolver el mensaje "GANASTE".
   3 - Al completarse la palabra, la versión enmascarada debe coincidir con la palabra original (no quedan guiones).
   4 - Una vez que el juego está ganado, cualquier intento adicional de adivinar letras debe ser ignorado.
+
+AT - 5 - Perder (6 fallos → ve "PERDISTE" y la palabra revelada)
+  UT:
+  1 - Al fallar 6 veces, el estado del juego cambia a "PERDIDO".
+  2 - Al perder, el método mensaje() devuelve "PERDISTE".
+  3 - Al perder, la palabra revelada debe mostrarse completa (sin guiones).
+  4 - Una vez que el juego está perdido, cualquier intento adicional de adivinar letras debe ser ignorado (no descuenta más vidas).
+  5 - Al perder, las vidas deben ser exactamente 0.
