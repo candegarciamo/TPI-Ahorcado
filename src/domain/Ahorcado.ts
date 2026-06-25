@@ -37,6 +37,9 @@ export class Ahorcado {
   }
 
   estado(): string {
+    if (this._vidas === 0) {
+      return 'PERDIDO';
+    }
     if (!this.palabraEnmascarada().includes('_')) {
       return 'GANADO';
     }
