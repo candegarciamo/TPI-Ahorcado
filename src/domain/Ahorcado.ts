@@ -24,8 +24,10 @@ export class Ahorcado {
       if (!this.palabraSecreta.toUpperCase().includes(letraUpper)) {
         this._vidas--;
       }
+      this._error = "";
+    } else {
+      this._error = "Ya intentaste esa letra";
     }
-    this._error = "";
   }
 
   palabraEnmascarada(): string {
