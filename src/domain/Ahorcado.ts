@@ -22,6 +22,9 @@ export class Ahorcado {
   }
 
   palabraEnmascarada(): string {
+    if (this._vidas === 0) {
+      return this.palabraSecreta.split('').join(' ');
+    }
     return this.palabraSecreta
       .split('')
       .map(char => this.letras.includes(char.toUpperCase()) ? char : '_')
