@@ -19,6 +19,7 @@ AT - 3 - Fallar Letra
   3 - el fallo es case-insensitive (intentar `x` o `X` es el mismo fallo)
   4 - no permite adivinar la misma letra incorrecta otra vez (no suma fallos extra)
   5 - lista la letra errada
+  6 - solo se puede ingresar una letra
 
 AT - 4 - Ganar (Completa todas las letras → ve mensaje "GANASTE")
   UT:

@@ -97,6 +97,15 @@ describe('Ahorcado - Fallar letra', () => {
     // @ts-ignore - Ignoramos para ver el rojo por falta de método
     expect(juego.letrasErradas()).toEqual(['E', 'X']);
   });
+
+  it('Solo se puede ingresar una letra', () => {
+    const juego = new Ahorcado('GATO');
+    // @ts-ignore
+    juego.adivinar('XYZ');
+    expect(juego.vidas()).toBe(6);
+    // @ts-ignore
+    expect(juego.letrasErradas()).toEqual([]);
+  });
 });
 
 describe('Ahorcado - Ganar', () => {
