@@ -272,4 +272,13 @@ describe('Ahorcado - Letra repetida', () => {
     juego.adivinar('Z');
     expect(juego.letrasErradas()).toEqual(['Z']);
   });
+
+  it('UT5 - Al reintentar una letra ya usada, se debe mostrar un mensaje de error', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('A');
+    expect(juego.error()).toBe('');
+
+    juego.adivinar('A');
+    expect(juego.error()).toBe('Ya intentaste esa letra');
+  });
 });
