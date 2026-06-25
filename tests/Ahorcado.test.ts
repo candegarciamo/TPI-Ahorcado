@@ -177,4 +177,17 @@ describe('Ahorcado - Perder', () => {
     
     expect(juego.palabraEnmascarada()).toBe('G A T O');
   });
+
+  it('Una vez que el juego está perdido, cualquier intento adicional de adivinar letras debe ser ignorado (no descuenta más vidas)', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('Q');
+    juego.adivinar('W');
+    juego.adivinar('E');
+    juego.adivinar('R');
+    juego.adivinar('Y');
+    juego.adivinar('U');
+    
+    juego.adivinar('I');
+    expect(juego.vidas()).toBe(0);
+  });
 });
