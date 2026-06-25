@@ -50,6 +50,9 @@ export class Ahorcado {
     if (this.estado() === 'GANADO') {
       return 'GANASTE';
     }
+    if (this.estado() === 'PERDIDO') {
+      return 'PERDISTE';
+    }
     return '';
   }
 }
