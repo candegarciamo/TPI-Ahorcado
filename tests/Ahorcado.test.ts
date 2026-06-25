@@ -190,4 +190,16 @@ describe('Ahorcado - Perder', () => {
     juego.adivinar('I');
     expect(juego.vidas()).toBe(0);
   });
+
+  it('Al perder, las vidas deben ser exactamente 0', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('Q');
+    juego.adivinar('W');
+    juego.adivinar('E');
+    juego.adivinar('R');
+    juego.adivinar('Y');
+    juego.adivinar('U');
+    
+    expect(juego.vidas()).toBe(0);
+  });
 });
