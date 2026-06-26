@@ -10,7 +10,7 @@ export class Ahorcado {
   }
 
   adivinar(letra: string): void {
-    if (letra.length !== 1 || !(/^[a-zA-Z]+$/.test(letra))) {
+    if (letra.length !== 1 || !(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$/.test(letra))) {
       this._error = "Caracter invalido";
       return;
     }
@@ -18,7 +18,7 @@ export class Ahorcado {
       this._error = "Juego terminado";
       return;
     }
-    const letraUpper = letra.toUpperCase();
+    const letraUpper = letra.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
     if (!this.letras.includes(letraUpper)) {
       this.letras.push(letraUpper);
       
