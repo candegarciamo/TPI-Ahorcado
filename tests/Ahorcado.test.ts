@@ -312,3 +312,15 @@ describe('Ahorcado - Soporte de acentos y ñ', () => {
     expect(juego.palabraEnmascarada()).toBe('N _ Ñ _');
   });
 });
+
+describe('Ahorcado - Palabra al azar de una lista', () => {
+  it('UT1 - Al inicializar un juego, la palabra debe elegirse al azar de una lista predefinida', () => {
+    const juego = new Ahorcado(undefined, () => 'ÁRBOL');
+    expect(juego.getPalabraSecreta()).toBe('ÁRBOL');
+  });
+
+  it('UT2 - Al inicializar un juego, la palabra debe estar en mayúsculas', () => {
+    const juego = new Ahorcado(undefined, () => 'árbol');
+    expect(juego.getPalabraSecreta()).toBe('ÁRBOL');
+  });
+})
