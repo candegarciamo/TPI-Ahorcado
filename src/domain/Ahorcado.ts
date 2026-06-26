@@ -21,7 +21,9 @@ export class Ahorcado {
     const letraUpper = letra.toUpperCase();
     if (!this.letras.includes(letraUpper)) {
       this.letras.push(letraUpper);
-      if (!this.palabraSecreta.toUpperCase().includes(letraUpper)) {
+      
+      const palabraNormalizada = this.palabraSecreta.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+      if (!palabraNormalizada.includes(letraUpper)) {
         this._vidas--;
       }
       this._error = "";
@@ -36,7 +38,10 @@ export class Ahorcado {
     }
     return this.palabraSecreta
       .split('')
-      .map(char => this.letras.includes(char.toUpperCase()) ? char : '_')
+      .map(char => {
+        const charNormalizado = char.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+        return this.letras.includes(charNormalizado) ? char : '_';
+      })
       .join(' ');
   }
 
