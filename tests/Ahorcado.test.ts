@@ -290,4 +290,11 @@ describe('Ahorcado - Soporte de acentos y ñ', () => {
     expect(juego.palabraEnmascarada()).toBe('Á _ _ _ _');
     expect(juego.vidas()).toBe(6);
   });
+
+  it('UT2 - adivinar una letra con acento ("Á") acierta la letra sin acento ("A") en la palabra secreta', () => {
+    const juego = new Ahorcado('ARBOL');
+    juego.adivinar('Á');
+    expect(juego.palabraEnmascarada()).toBe('A _ _ _ _');
+    expect(juego.vidas()).toBe(6);
+  });
 });
