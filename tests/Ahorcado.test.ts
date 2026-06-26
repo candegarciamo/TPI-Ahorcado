@@ -297,4 +297,10 @@ describe('Ahorcado - Soporte de acentos y ñ', () => {
     expect(juego.palabraEnmascarada()).toBe('A _ _ _ _');
     expect(juego.vidas()).toBe(6);
   });
+
+  it('UT3 - la palabra enmascarada retiene los acentos originales de la palabra secreta', () => {
+    const juego = new Ahorcado('MURCIÉLAGO');
+    juego.adivinar('E');
+    expect(juego.palabraEnmascarada()).toBe('_ _ _ _ _ É _ _ _ _');
+  });
 });
