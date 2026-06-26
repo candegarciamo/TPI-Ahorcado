@@ -2,8 +2,16 @@ export class Ahorcado {
   private letras: string[] = [];
   private _vidas: number = 6;
   private _error: string = "";
+  private readonly lista = ["GATO", "ALA", "NIÑO", "ÁRBOL", "MURCIÉLAGO"];
+  private palabraSecreta: string;
 
-  constructor(private palabraSecreta: string) { }
+  constructor(palabra?: string | null, selector = () => this.lista[Math.floor(Math.random() * this.lista.length)]) {
+    this.palabraSecreta = (palabra ?? selector()).toUpperCase();
+  }
+
+  getPalabraSecreta(): string {
+    return this.palabraSecreta;
+  }
 
   private normalizar(texto: string): string {
     return texto.split('').map(char => {
@@ -29,7 +37,7 @@ export class Ahorcado {
     const letraUpper = this.normalizar(letra);
     if (!this.letras.includes(letraUpper)) {
       this.letras.push(letraUpper);
-      
+
       const palabraNormalizada = this.normalizar(this.palabraSecreta);
       if (!palabraNormalizada.includes(letraUpper)) {
         this._vidas--;
