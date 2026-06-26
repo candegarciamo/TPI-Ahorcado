@@ -32,3 +32,7 @@ Then("se ve el mensaje {string}", async ({ page }, mensaje: string) => {
 Then("se ve el error {string}", async ({ page }, error: string) => {
   await expect(page.getByTestId("error")).toHaveText(error);
 });
+
+Given("una partida sin palabra fija", async ({ page }) => {
+  await page.goto("/");
+});

@@ -3,7 +3,7 @@ import { mountApp } from './main';
 
 // Leemos la palabra de la URL para cumplir con el seam determinista
 const urlParams = new URLSearchParams(window.location.search);
-const word = urlParams.get('word') || 'GATO';
+const word = urlParams.get('word');
 
 // Inicializamos el objeto de dominio
 const juego = new Ahorcado(word);
