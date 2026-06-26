@@ -50,3 +50,11 @@ AT - 7 - Entrada inválida (Tipea algo que no es letra, o juega con la partida t
   3 - Al intentar ingresar algo que no es una letra, la letra ingresada debe ser ignorada.
   4 - Al intentar ingresar algo que no es una letra, no se deben modificar las letras adivinadas.
   5 - Al intentar ingresar algo que no es una letra, se debe mostrar un mensaje de error
+
+ATs para Aprobacion Directa
+AT - 8 - Soporte de acentos y ñ
+  UT:
+  1 - adivinar una letra sin acento ("A") acierta la letra con acento ("Á") en la palabra secreta.
+  2 - adivinar una letra con acento ("Á") acierta la letra sin acento ("A") en la palabra secreta.
+  3 - la palabra enmascarada retiene los acentos originales de la palabra secreta (ej. si la palabra es ÁRBOL y se adivina A, devuelve "Á _ _ _ _").
+  4 - la letra "Ñ" es independiente de la "N".
