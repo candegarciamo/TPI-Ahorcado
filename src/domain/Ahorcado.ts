@@ -5,6 +5,14 @@ export class Ahorcado {
 
   constructor(private palabraSecreta: string) { }
 
+  private normalizar(texto: string): string {
+    return texto.split('').map(char => {
+      const upper = char.toUpperCase();
+      if (upper === 'Ñ') return 'Ñ';
+      return upper.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }).join('');
+  }
+
   vidas(): number {
     return this._vidas;
   }
@@ -18,11 +26,11 @@ export class Ahorcado {
       this._error = "Juego terminado";
       return;
     }
-    const letraUpper = letra.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+    const letraUpper = this.normalizar(letra);
     if (!this.letras.includes(letraUpper)) {
       this.letras.push(letraUpper);
       
-      const palabraNormalizada = this.palabraSecreta.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+      const palabraNormalizada = this.normalizar(this.palabraSecreta);
       if (!palabraNormalizada.includes(letraUpper)) {
         this._vidas--;
       }
@@ -39,7 +47,7 @@ export class Ahorcado {
     return this.palabraSecreta
       .split('')
       .map(char => {
-        const charNormalizado = char.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+        const charNormalizado = this.normalizar(char);
         return this.letras.includes(charNormalizado) ? char : '_';
       })
       .join(' ');
