@@ -282,3 +282,12 @@ describe('Ahorcado - Letra repetida', () => {
     expect(juego.error()).toBe('Ya intentaste esa letra');
   });
 });
+
+describe('Ahorcado - Soporte de acentos y ñ', () => {
+  it('UT1 - adivinar una letra sin acento ("A") acierta la letra con acento ("Á") en la palabra secreta', () => {
+    const juego = new Ahorcado('ÁRBOL');
+    juego.adivinar('A');
+    expect(juego.palabraEnmascarada()).toBe('Á _ _ _ _');
+    expect(juego.vidas()).toBe(6);
+  });
+});
