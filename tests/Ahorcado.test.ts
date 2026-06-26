@@ -303,4 +303,12 @@ describe('Ahorcado - Soporte de acentos y ñ', () => {
     juego.adivinar('E');
     expect(juego.palabraEnmascarada()).toBe('_ _ _ _ _ É _ _ _ _');
   });
+
+  it('UT4 - la letra "Ñ" es independiente de la "N"', () => {
+    const juego = new Ahorcado('NIÑO');
+    juego.adivinar('N');
+    expect(juego.palabraEnmascarada()).toBe('N _ _ _');
+    juego.adivinar('Ñ');
+    expect(juego.palabraEnmascarada()).toBe('N _ Ñ _');
+  });
 });
