@@ -324,3 +324,11 @@ describe('Ahorcado - Palabra al azar de una lista', () => {
     expect(juego.getPalabraSecreta()).toBe('ÁRBOL');
   });
 })
+
+describe('Ahorcado - Dibujo progresivo', () => {
+  it('Con 0 errores, partesVisibles() devuelve una lista vacía', () => {
+    const juego = new Ahorcado('GATO');
+    // @ts-ignore - Ignoramos el chequeo de tipos para ver el ROJO
+    expect(juego.partesVisibles()).toEqual([]);
+  });
+});
