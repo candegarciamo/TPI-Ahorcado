@@ -101,7 +101,12 @@ export class Ahorcado {
   partesVisibles(): string[] {
     const errores = 6 - this._vidas;
     if (errores === 0) return [];
-    return ["soga", ...Ahorcado.PARTES.slice(0, errores)];
+    const partes = ["soga", ...Ahorcado.PARTES.slice(0, errores)];
+    if (this.estado() === "PERDIDO") {
+      partes.push("ojosX", "bocaTriste");
+    }
+    return partes;
   }
 }
+
 
