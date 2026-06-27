@@ -396,6 +396,11 @@ describe('Ahorcado - Dibujo progresivo', () => {
     // Las partes del primer error siguen presentes en el segundo
     expect(partesConDosErrores.slice(0, partesConUnError.length)).toEqual(partesConUnError);
   });
+
+  it('La base y la horca se muestran siempre (verificado vía AT, el dominio no lo devuelve como parte)', () => {
+    const juego = new Ahorcado('GATO');
+    expect(juego.partesVisibles()).not.toContain('base');
+  });
 });
 
 
