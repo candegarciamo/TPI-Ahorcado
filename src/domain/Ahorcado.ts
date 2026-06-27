@@ -110,6 +110,7 @@ export class Ahorcado {
 
   reiniciar(palabra: string): void {
     this._vidas = 6;
+    this.letras = [];
   }
 }
 
