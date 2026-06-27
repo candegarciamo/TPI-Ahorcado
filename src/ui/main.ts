@@ -64,13 +64,48 @@ export function mountApp(container: HTMLElement, juego: Ahorcado, palabraInicial
         <p>Letras erradas: <span data-testid="missed-letters">${juego.letrasErradas().join(', ')}</span></p>
         <p data-testid="error">${juego.error()}</p>
         <p data-testid="status">${juego.mensaje()}</p>
-        ${terminado ? `<button id="btn-reiniciar">Jugar de nuevo</button>` : ''}
+
+        <div data-testid="keyboard" style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 5px; max-width: 400px;">
+          ${"ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split('').map(letra => {
+            const yaAdivinada = juego.letrasAdivinadas().includes(letra);
+            const esAcertada = juego.letrasAcertadas().includes(letra);
+            const esErrada = juego.letrasErradas().includes(letra);
+            
+            // Asignamos colores básicos de feedback visual
+            let backgroundColor = '';
+            if (esAcertada) backgroundColor = 'lightgreen';
+            if (esErrada) backgroundColor = 'lightcoral';
+
+            return `<button 
+                      data-testid="keyboard-key-${letra}" 
+                      style="background-color: ${backgroundColor}; padding: 10px; cursor: pointer;"
+                      ${(terminado || yaAdivinada) ? 'disabled' : ''}
+                    >${letra}</button>`;
+          }).join('')}
+        </div>
+
+        ${terminado ? `<button id="btn-reiniciar" style="margin-top: 15px;">Jugar de nuevo</button>` : ''}
     `;
 
     if (terminado) {
       gameUi.querySelector('#btn-reiniciar')!.addEventListener('click', () => {
         juego.reiniciar(palabraInicial);
         render();
+      });
+    }
+
+    // Agregar listeners a los botones del teclado
+    if (!terminado) {
+      "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split('').forEach(letra => {
+        const btn = gameUi.querySelector(`[data-testid="keyboard-key-${letra}"]`);
+        if (btn && !btn.hasAttribute('disabled')) {
+          btn.addEventListener('click', () => {
+            juego.adivinar(letra);
+            // El teclado virtual no lee del input, pero limpiamos el input manual por si acaso
+            input.value = ''; 
+            render();
+          });
+        }
       });
     }
   };
