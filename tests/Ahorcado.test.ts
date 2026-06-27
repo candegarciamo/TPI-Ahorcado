@@ -511,4 +511,12 @@ describe('Ahorcado - Teclado en pantalla', () => {
     // Verificamos que la unión de ambas dé todas las intentadas
     expect(acertadas.length + erradas.length).toBe(juego.letrasAdivinadas().length);
   });
+
+  it('UT5 - Si la palabra tiene acento y se adivina la vocal sin acento, esta debe aparecer en letras acertadas y no en erradas', () => {
+    const juego = new Ahorcado('ÁRBOL');
+    juego.adivinar('A'); // Se adivina la vocal base
+
+    expect(juego.letrasAcertadas()).toContain('A');
+    expect(juego.letrasErradas()).not.toContain('A');
+  });
 });
