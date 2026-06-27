@@ -65,6 +65,11 @@ export class Ahorcado {
     return this.letras;
   }
 
+  letrasAcertadas(): string[] {
+    const palabraNormalizada = this.normalizar(this.palabraSecreta);
+    return this.letras.filter(letra => palabraNormalizada.includes(letra));
+  }
+
   letrasErradas(): string[] {
     return this.letras.filter(letra => !this.palabraSecreta.toUpperCase().includes(letra));
   }
