@@ -481,4 +481,12 @@ describe('Ahorcado - Teclado en pantalla', () => {
     // @ts-ignore - Forzamos ignorar el tipo para que compile y falle (estado ROJO)
     expect(juego.letrasAcertadas()).toEqual(['A']);
   });
+
+  it('UT2 - El juego provee una colección de las letras intentadas y erradas', () => {
+    // Usamos una palabra con acento para que la implementación actual (que usa toUpperCase en lugar de normalizar) falle.
+    const juego = new Ahorcado('ÁRBOL');
+    juego.adivinar('A'); // Acertada
+    juego.adivinar('Z'); // Errada
+    expect(juego.letrasErradas()).toEqual(['Z']);
+  });
 });
