@@ -519,4 +519,18 @@ describe('Ahorcado - Teclado en pantalla', () => {
     expect(juego.letrasAcertadas()).toContain('A');
     expect(juego.letrasErradas()).not.toContain('A');
   });
+
+  it('UT6 - Al reiniciar la partida, ambas colecciones de letras deben vaciarse para la UI', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('A');
+    juego.adivinar('Z');
+
+    expect(juego.letrasAcertadas().length).toBeGreaterThan(0);
+    expect(juego.letrasErradas().length).toBeGreaterThan(0);
+
+    juego.reiniciar('PERRO');
+
+    expect(juego.letrasAcertadas()).toEqual([]);
+    expect(juego.letrasErradas()).toEqual([]);
+  });
 });
