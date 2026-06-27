@@ -331,4 +331,11 @@ describe('Ahorcado - Dibujo progresivo', () => {
     // @ts-ignore - Ignoramos el chequeo de tipos para ver el ROJO
     expect(juego.partesVisibles()).toEqual([]);
   });
+
+  it('Con 1 error, partesVisibles() devuelve ["soga", "cabeza"]', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('X');
+    expect(juego.partesVisibles()).toEqual(["soga", "cabeza"]);
+  });
 });
+
