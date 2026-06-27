@@ -386,7 +386,18 @@ describe('Ahorcado - Dibujo progresivo', () => {
       "ojosX", "bocaTriste"
     ]);
   });
+
+  it('Cada error agrega una parte sin modificar las anteriores (acumulativo)', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('X');
+    const partesConUnError = juego.partesVisibles();
+    juego.adivinar('Y');
+    const partesConDosErrores = juego.partesVisibles();
+    // Las partes del primer error siguen presentes en el segundo
+    expect(partesConDosErrores.slice(0, partesConUnError.length)).toEqual(partesConUnError);
+  });
 });
+
 
 
 
