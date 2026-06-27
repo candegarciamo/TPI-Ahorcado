@@ -464,4 +464,11 @@ describe('Ahorcado - Jugar de nuevo', () => {
     juego.reiniciar('GATO');
     expect(juego.estado()).toBe('JUGANDO');
   });
+
+  it('UT5 - Al reiniciar el juego, la palabra enmascarada refleja la nueva palabra (sin letras reveladas)', () => {
+    const juego = new Ahorcado('GATO');  // 4 letras
+    juego.adivinar('A');                 // revela la A
+    juego.reiniciar('SOL');              // nueva palabra de 3 letras
+    expect(juego.palabraEnmascarada()).toBe('_ _ _');
+  });
 });
