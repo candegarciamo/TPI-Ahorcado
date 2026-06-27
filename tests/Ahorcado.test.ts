@@ -418,3 +418,15 @@ describe('Ahorcado - Dibujo progresivo', () => {
     expect(juego.partesVisibles()).toContain("bocaTriste");
   });
 });
+
+describe('Ahorcado - Jugar de nuevo', () => {
+  it('UT1 - Al reiniciar el juego, las vidas vuelven a ser 6', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('X');
+    juego.adivinar('Y');
+    juego.adivinar('Z');
+    // @ts-ignore - reiniciar() no existe todavía; queremos ver el ROJO
+    juego.reiniciar('GATO');
+    expect(juego.vidas()).toBe(6);
+  });
+});
