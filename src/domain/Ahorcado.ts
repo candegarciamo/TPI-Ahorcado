@@ -92,4 +92,9 @@ export class Ahorcado {
   error(): string {
     return this._error;
   }
+
+  partesVisibles(): string[] {
+    return [];
+  }
 }
+
