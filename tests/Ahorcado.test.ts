@@ -495,4 +495,20 @@ describe('Ahorcado - Teclado en pantalla', () => {
     expect(juego.letrasAcertadas()).toEqual([]);
     expect(juego.letrasErradas()).toEqual([]);
   });
+
+  it('UT4 - Las letras adivinadas se clasifican como acertadas o erradas de forma mutuamente excluyente', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('A'); // Acertada
+    juego.adivinar('Z'); // Errada
+    
+    const acertadas = juego.letrasAcertadas();
+    const erradas = juego.letrasErradas();
+
+    // Verificamos exclusión mutua: ninguna letra puede estar en ambas listas a la vez
+    const interseccion = acertadas.filter(letra => erradas.includes(letra));
+    expect(interseccion).toEqual([]);
+    
+    // Verificamos que la unión de ambas dé todas las intentadas
+    expect(acertadas.length + erradas.length).toBe(juego.letrasAdivinadas().length);
+  });
 });
