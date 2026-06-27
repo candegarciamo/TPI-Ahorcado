@@ -88,3 +88,12 @@
   3. Al reiniciar el juego, la lista de letras erradas queda vacía.
   4. Al reiniciar el juego, el estado del juego deja de ser "GANADO" o "PERDIDO" y vuelve al estado inicial.
   5. Al reiniciar el juego, la palabra enmascarada refleja la nueva palabra (sin letras reveladas).
+
+## AT 12 - Teclado en pantalla
+  ### UTs:
+  1. El juego (dominio) debe proveer una colección/lista de las letras que ya fueron intentadas y acertadas.
+  2. El juego (dominio) debe proveer una colección/lista de las letras que ya fueron intentadas y erradas (para que la UI las lea).
+  3. La UI debe renderizar un botón para cada letra del abecedario (A-Z, incluyendo la Ñ).
+  4. Al hacer clic en un botón del teclado virtual, el componente debe invocar la acción de adivinar esa letra en el juego.
+  5. Las teclas correspondientes a letras ya intentadas (acertadas o erradas) deben marcarse como deshabilitadas o cambiar su estilo en la UI.
+  6. Al reiniciar la partida, todas las teclas del teclado virtual deben volver a estar habilitadas y con su estilo original.
