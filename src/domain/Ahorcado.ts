@@ -107,6 +107,10 @@ export class Ahorcado {
     }
     return partes;
   }
+
+  reiniciar(palabra: string): void {
+    this._vidas = 6;
+  }
 }
 
 
