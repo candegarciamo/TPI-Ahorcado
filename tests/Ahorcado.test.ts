@@ -435,4 +435,11 @@ describe('Ahorcado - Jugar de nuevo', () => {
     juego.reiniciar('GATO');
     expect(juego.letrasAdivinadas()).toEqual([]);
   });
+
+  it('UT3 - Al reiniciar el juego, la lista de letras erradas queda vacía', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('X');  // letra incorrecta → queda en letrasErradas
+    juego.reiniciar('GATO');
+    expect(juego.letrasErradas()).toEqual([]);
+  });
 });
