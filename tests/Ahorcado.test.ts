@@ -442,4 +442,26 @@ describe('Ahorcado - Jugar de nuevo', () => {
     juego.reiniciar('GATO');
     expect(juego.letrasErradas()).toEqual([]);
   });
+
+  it('UT4a - Al reiniciar desde estado PERDIDO, el estado vuelve a JUGANDO', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('X');
+    juego.adivinar('Y');
+    juego.adivinar('Z');
+    juego.adivinar('W');
+    juego.adivinar('Q');
+    juego.adivinar('R');
+    expect(juego.estado()).toBe('PERDIDO');
+    juego.reiniciar('GATO');
+    expect(juego.estado()).toBe('JUGANDO');
+  });
+
+  it('UT4b - Al reiniciar desde estado GANADO, el estado vuelve a JUGANDO', () => {
+    const juego = new Ahorcado('ALA');
+    juego.adivinar('A');
+    juego.adivinar('L');
+    expect(juego.estado()).toBe('GANADO');
+    juego.reiniciar('GATO');
+    expect(juego.estado()).toBe('JUGANDO');
+  });
 });
