@@ -36,3 +36,19 @@ Then("se ve el error {string}", async ({ page }, error: string) => {
 Given("una partida sin palabra fija", async ({ page }) => {
   await page.goto("/");
 });
+
+Then("el dibujo del ahorcado muestra {int} partes", async ({ page }, cantidad: number) => {
+  const partes = page.locator('[data-testid="hangman-drawing"] [data-part]');
+  const visibles = partes.locator(':visible');
+  await expect(visibles).toHaveCount(cantidad);
+});
+
+Then("se ve la parte {string} del muñeco", async ({ page }, parte: string) => {
+  const elemento = page.locator(`[data-testid="hangman-drawing"] [data-part="${parte}"]`);
+  await expect(elemento).toBeVisible();
+});
+
+Then("se ve la base de la horca", async ({ page }) => {
+  const base = page.locator('[data-testid="hangman-drawing"] [data-testid="hangman-base"]');
+  await expect(base).toBeVisible();
+});

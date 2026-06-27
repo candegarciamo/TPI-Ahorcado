@@ -64,3 +64,18 @@
   ### UTs:
   1. Al inicializar un juego, la palabra debe elegirse al azar de una lista predefinida.
   2. Al inicializar un juego, la palabra debe estar en mayúsculas.
+
+
+
+## AT 10 - Dibujo progresivo del ahorcado con SVG (qué partes del muñeco se muestran según la cantidad de errores (0→6))
+  ### UTs (sobre el dominio — método `partesVisibles()` en `Ahorcado`):
+  1. Con 0 errores, `partesVisibles()` devuelve una lista vacía (no se muestra ninguna parte del muñeco).
+  2. Con 1 error, `partesVisibles()` devuelve `["soga", "cabeza"]` (la soga aparece junto con la cabeza en el primer error).
+  3. Con 2 errores, `partesVisibles()` devuelve `["soga", "cabeza", "cuerpo"]`.
+  4. Con 3 errores, `partesVisibles()` devuelve `["soga", "cabeza", "cuerpo", "brazoIzquierdo"]`.
+  5. Con 4 errores, `partesVisibles()` devuelve `["soga", "cabeza", "cuerpo", "brazoIzquierdo", "brazoDerecho"]`.
+  6. Con 5 errores, `partesVisibles()` devuelve `["soga", "cabeza", "cuerpo", "brazoIzquierdo", "brazoDerecho", "piernaIzquierda"]`.
+  7. Con 6 errores (juego perdido), `partesVisibles()` devuelve todas las partes del cuerpo más la cara de muerto: `["soga", "cabeza", "cuerpo", "brazoIzquierdo", "brazoDerecho", "piernaIzquierda", "piernaDerecha", "ojosX", "bocaTriste"]`.
+  8. Cada error nuevo agrega exactamente una parte sin modificar las anteriores (las partes son acumulativas).
+  9. La base y la horca (poste, travesaño) se muestran siempre, independientemente de los errores (verificable vía AT).
+  10. Al perder (6 errores), la cara del muñeco muestra ojos en X y boca con "-" (cara de muerto).
