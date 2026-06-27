@@ -401,10 +401,20 @@ describe('Ahorcado - Dibujo progresivo', () => {
     const juego = new Ahorcado('GATO');
     expect(juego.partesVisibles()).not.toContain('base');
   });
+
+  it('Al perder, la cara muestra ojos X y boca triste; con menos de 6 errores no aparecen', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('X');
+    juego.adivinar('Y');
+    juego.adivinar('Z');
+    juego.adivinar('W');
+    juego.adivinar('Q');
+    // 5 errores: no debería tener cara de muerto
+    expect(juego.partesVisibles()).not.toContain("ojosX");
+    expect(juego.partesVisibles()).not.toContain("bocaTriste");
+    // 6to error: pierde
+    juego.adivinar('R');
+    expect(juego.partesVisibles()).toContain("ojosX");
+    expect(juego.partesVisibles()).toContain("bocaTriste");
+  });
 });
-
-
-
-
-
-
