@@ -79,3 +79,12 @@
   8. Cada error nuevo agrega exactamente una parte sin modificar las anteriores (las partes son acumulativas).
   9. La base y la horca (poste, travesaño) se muestran siempre, independientemente de los errores (verificable vía AT).
   10. Al perder (6 errores), la cara del muñeco muestra ojos en X y boca con "-" (cara de muerto).
+
+
+## AT 11 - Jugar de nuevo
+  ### UTs:
+  1. Al reiniciar el juego, las vidas vuelven a ser 6.
+  2. Al reiniciar el juego, las letras adivinadas antes ya no cuentan como adivinadas.
+  3. Al reiniciar el juego, la lista de letras erradas queda vacía.
+  4. Al reiniciar el juego, el estado del juego deja de ser "GANADO" o "PERDIDO" y vuelve al estado inicial.
+  5. Al reiniciar el juego, la palabra enmascarada refleja la nueva palabra (sin letras reveladas).

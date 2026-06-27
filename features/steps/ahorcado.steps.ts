@@ -52,3 +52,11 @@ Then("se ve la base de la horca", async ({ page }) => {
   const base = page.locator('[data-testid="hangman-drawing"] [data-testid="hangman-base"]');
   await expect(base).toBeVisible();
 });
+
+When("el jugador reinicia el juego", async ({ page }) => {
+  await page.getByRole("button", { name: /jugar de nuevo/i }).click();
+});
+
+Then("no se ve la letra errada {string}", async ({ page }, letra: string) => {
+  await expect(page.getByTestId("missed-letters")).not.toContainText(letra);
+});
