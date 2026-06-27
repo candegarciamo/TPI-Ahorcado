@@ -352,7 +352,27 @@ describe('Ahorcado - Dibujo progresivo', () => {
     juego.adivinar('Z');
     expect(juego.partesVisibles()).toEqual(["soga", "cabeza", "cuerpo", "brazoIzquierdo"]);
   });
+
+  it('Con 4 errores, partesVisibles() devuelve ["soga", "cabeza", "cuerpo", "brazoIzquierdo", "brazoDerecho"]', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('X');
+    juego.adivinar('Y');
+    juego.adivinar('Z');
+    juego.adivinar('W');
+    expect(juego.partesVisibles()).toEqual(["soga", "cabeza", "cuerpo", "brazoIzquierdo", "brazoDerecho"]);
+  });
+
+  it('Con 5 errores, partesVisibles() devuelve ["soga", "cabeza", "cuerpo", "brazoIzquierdo", "brazoDerecho", "piernaIzquierda"]', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('X');
+    juego.adivinar('Y');
+    juego.adivinar('Z');
+    juego.adivinar('W');
+    juego.adivinar('Q');
+    expect(juego.partesVisibles()).toEqual(["soga", "cabeza", "cuerpo", "brazoIzquierdo", "brazoDerecho", "piernaIzquierda"]);
+  });
 });
+
 
 
 
