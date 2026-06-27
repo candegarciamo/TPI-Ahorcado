@@ -472,3 +472,13 @@ describe('Ahorcado - Jugar de nuevo', () => {
     expect(juego.palabraEnmascarada()).toBe('_ _ _');
   });
 });
+
+describe('Ahorcado - Teclado en pantalla', () => {
+  it('UT1 - El juego provee una colección de las letras intentadas y acertadas', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('A');
+    juego.adivinar('Z');
+    // @ts-ignore - Forzamos ignorar el tipo para que compile y falle (estado ROJO)
+    expect(juego.letrasAcertadas()).toEqual(['A']);
+  });
+});
