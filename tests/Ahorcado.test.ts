@@ -425,8 +425,14 @@ describe('Ahorcado - Jugar de nuevo', () => {
     juego.adivinar('X');
     juego.adivinar('Y');
     juego.adivinar('Z');
-    // @ts-ignore - reiniciar() no existe todavía; queremos ver el ROJO
     juego.reiniciar('GATO');
     expect(juego.vidas()).toBe(6);
+  });
+
+  it('UT2 - Al reiniciar el juego, las letras adivinadas antes ya no cuentan como adivinadas', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('A');  // letra correcta → queda en letrasAdivinadas
+    juego.reiniciar('GATO');
+    expect(juego.letrasAdivinadas()).toEqual([]);
   });
 });
