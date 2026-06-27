@@ -337,5 +337,13 @@ describe('Ahorcado - Dibujo progresivo', () => {
     juego.adivinar('X');
     expect(juego.partesVisibles()).toEqual(["soga", "cabeza"]);
   });
+
+  it('Con 2 errores, partesVisibles() devuelve ["soga", "cabeza", "cuerpo"]', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('X');
+    juego.adivinar('Y');
+    expect(juego.partesVisibles()).toEqual(["soga", "cabeza", "cuerpo"]);
+  });
 });
+
 
