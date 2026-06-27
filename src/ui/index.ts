@@ -11,5 +11,5 @@ const juego = new Ahorcado(word);
 // Montamos la UI inyectándole el objeto
 const appContainer = document.getElementById('app');
 if (appContainer) {
-    mountApp(appContainer, juego);
+    mountApp(appContainer, juego, word);
 }

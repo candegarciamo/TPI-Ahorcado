@@ -108,10 +108,12 @@ export class Ahorcado {
     return partes;
   }
 
-  reiniciar(palabra: string): void {
+  reiniciar(palabra?: string | null): void {
     this._vidas = 6;
     this.letras = [];
-    this.palabraSecreta = palabra.toUpperCase();
+    this.palabraSecreta = palabra
+      ? palabra.toUpperCase()
+      : this.lista[Math.floor(Math.random() * this.lista.length)];
   }
 }
 

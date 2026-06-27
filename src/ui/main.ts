@@ -1,6 +1,6 @@
 import { Ahorcado } from '../domain/Ahorcado';
 
-export function mountApp(container: HTMLElement, juego: Ahorcado) {
+export function mountApp(container: HTMLElement, juego: Ahorcado, palabraInicial: string | null) {
   container.innerHTML = `
     <div>
       <div id="game-ui"></div>
@@ -13,6 +13,7 @@ export function mountApp(container: HTMLElement, juego: Ahorcado) {
 
   const render = () => {
     const visibles = juego.partesVisibles();
+    const terminado = juego.estado() === 'GANADO' || juego.estado() === 'PERDIDO';
     gameUi.innerHTML = `
         <svg data-testid="hangman-drawing" width="200" height="250" viewBox="0 0 200 250">
           <g data-testid="hangman-base">
@@ -63,7 +64,15 @@ export function mountApp(container: HTMLElement, juego: Ahorcado) {
         <p>Letras erradas: <span data-testid="missed-letters">${juego.letrasErradas().join(', ')}</span></p>
         <p data-testid="error">${juego.error()}</p>
         <p data-testid="status">${juego.mensaje()}</p>
+        ${terminado ? `<button id="btn-reiniciar">Jugar de nuevo</button>` : ''}
     `;
+
+    if (terminado) {
+      gameUi.querySelector('#btn-reiniciar')!.addEventListener('click', () => {
+        juego.reiniciar(palabraInicial);
+        render();
+      });
+    }
   };
 
   input.addEventListener('keypress', (e) => {
