@@ -93,8 +93,15 @@ export class Ahorcado {
     return this._error;
   }
 
+  private static readonly PARTES: string[] = [
+    "cabeza", "cuerpo", "brazoIzquierdo",
+    "brazoDerecho", "piernaIzquierda", "piernaDerecha"
+  ];
+
   partesVisibles(): string[] {
-    return [];
+    const errores = 6 - this._vidas;
+    if (errores === 0) return [];
+    return ["soga", ...Ahorcado.PARTES.slice(0, errores)];
   }
 }
 
