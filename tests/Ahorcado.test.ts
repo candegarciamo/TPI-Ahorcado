@@ -489,4 +489,10 @@ describe('Ahorcado - Teclado en pantalla', () => {
     juego.adivinar('Z'); // Errada
     expect(juego.letrasErradas()).toEqual(['Z']);
   });
+
+  it('UT3 - Al iniciar una partida, las colecciones de letras acertadas y erradas deben estar inicialmente vacías', () => {
+    const juego = new Ahorcado('GATO');
+    expect(juego.letrasAcertadas()).toEqual([]);
+    expect(juego.letrasErradas()).toEqual([]);
+  });
 });
