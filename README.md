@@ -4,6 +4,10 @@ Este es el Trabajo Práctico Integrador del juego del Ahorcado, desarrollado con
 
 ## Reporte de Cobertura de Tests
 
+El análisis de calidad de código y cobertura es generado por **GitHub Actions** mediante **SonarCloud**.
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=candegarciamo_TPI-Ahorcado&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=candegarciamo_TPI-Ahorcado)
+
 El reporte unificado de cobertura de los tests unitarios y de integración se genera y publica automáticamente en cada cambio a la rama principal en **GitHub Pages**.
 
 🔗 **[Ver Resultados de Cobertura de Tests (Coverage)](https://candegarciamo.github.io/TPI-Ahorcado/)**
