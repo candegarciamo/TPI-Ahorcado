@@ -60,3 +60,29 @@ When("el jugador reinicia el juego", async ({ page }) => {
 Then("no se ve la letra errada {string}", async ({ page }, letra: string) => {
   await expect(page.getByTestId("missed-letters")).not.toContainText(letra);
 });
+
+Given('que inicio un nuevo juego con la palabra secreta {string}', async ({ page }, palabra: string) => {
+  await page.goto(`/?word=${palabra}`);
+});
+
+Then('veo un teclado en pantalla con las letras de la {string} a la {string}, incluyendo la {string}', async ({ page }, arg: string, arg1: string, arg2: string) => {
+  const keyboard = page.getByTestId("keyboard");
+  await expect(keyboard).toBeVisible();
+  const keys = keyboard.locator('button');
+  await expect(keys).toHaveCount(27);
+  await expect(keyboard.locator(`[data-testid="keyboard-key-${arg}"]`)).toBeVisible();
+  await expect(keyboard.locator(`[data-testid="keyboard-key-${arg1}"]`)).toBeVisible();
+  await expect(keyboard.locator(`[data-testid="keyboard-key-${arg2}"]`)).toBeVisible();
+});
+
+When('toco la tecla {string} en el teclado en pantalla', async ({ page }, letra: string) => {
+  await page.locator(`[data-testid="keyboard-key-${letra}"]`).click();
+});
+
+Then('la palabra enmascarada es {string}', async ({ page }, esperada: string) => {
+  await expect(page.getByTestId("word")).toHaveText(esperada);
+});
+
+Then('la tecla {string} debe estar deshabilitada', async ({ page }, letra: string) => {
+  await expect(page.locator(`[data-testid="keyboard-key-${letra}"]`)).toBeDisabled();
+});

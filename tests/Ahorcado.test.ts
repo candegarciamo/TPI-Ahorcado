@@ -472,3 +472,65 @@ describe('Ahorcado - Jugar de nuevo', () => {
     expect(juego.palabraEnmascarada()).toBe('_ _ _');
   });
 });
+
+describe('Ahorcado - Teclado en pantalla', () => {
+  it('UT1 - El juego provee una colección de las letras intentadas y acertadas', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('A');
+    juego.adivinar('Z');
+    // @ts-ignore - Forzamos ignorar el tipo para que compile y falle (estado ROJO)
+    expect(juego.letrasAcertadas()).toEqual(['A']);
+  });
+
+  it('UT2 - El juego provee una colección de las letras intentadas y erradas', () => {
+    // Usamos una palabra con acento para que la implementación actual (que usa toUpperCase en lugar de normalizar) falle.
+    const juego = new Ahorcado('ÁRBOL');
+    juego.adivinar('A'); // Acertada
+    juego.adivinar('Z'); // Errada
+    expect(juego.letrasErradas()).toEqual(['Z']);
+  });
+
+  it('UT3 - Al iniciar una partida, las colecciones de letras acertadas y erradas deben estar inicialmente vacías', () => {
+    const juego = new Ahorcado('GATO');
+    expect(juego.letrasAcertadas()).toEqual([]);
+    expect(juego.letrasErradas()).toEqual([]);
+  });
+
+  it('UT4 - Las letras adivinadas se clasifican como acertadas o erradas de forma mutuamente excluyente', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('A'); // Acertada
+    juego.adivinar('Z'); // Errada
+    
+    const acertadas = juego.letrasAcertadas();
+    const erradas = juego.letrasErradas();
+
+    // Verificamos exclusión mutua: ninguna letra puede estar en ambas listas a la vez
+    const interseccion = acertadas.filter(letra => erradas.includes(letra));
+    expect(interseccion).toEqual([]);
+    
+    // Verificamos que la unión de ambas dé todas las intentadas
+    expect(acertadas.length + erradas.length).toBe(juego.letrasAdivinadas().length);
+  });
+
+  it('UT5 - Si la palabra tiene acento y se adivina la vocal sin acento, esta debe aparecer en letras acertadas y no en erradas', () => {
+    const juego = new Ahorcado('ÁRBOL');
+    juego.adivinar('A'); // Se adivina la vocal base
+
+    expect(juego.letrasAcertadas()).toContain('A');
+    expect(juego.letrasErradas()).not.toContain('A');
+  });
+
+  it('UT6 - Al reiniciar la partida, ambas colecciones de letras deben vaciarse para la UI', () => {
+    const juego = new Ahorcado('GATO');
+    juego.adivinar('A');
+    juego.adivinar('Z');
+
+    expect(juego.letrasAcertadas().length).toBeGreaterThan(0);
+    expect(juego.letrasErradas().length).toBeGreaterThan(0);
+
+    juego.reiniciar('PERRO');
+
+    expect(juego.letrasAcertadas()).toEqual([]);
+    expect(juego.letrasErradas()).toEqual([]);
+  });
+});

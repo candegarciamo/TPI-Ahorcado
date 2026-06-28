@@ -88,3 +88,12 @@
   3. Al reiniciar el juego, la lista de letras erradas queda vacía.
   4. Al reiniciar el juego, el estado del juego deja de ser "GANADO" o "PERDIDO" y vuelve al estado inicial.
   5. Al reiniciar el juego, la palabra enmascarada refleja la nueva palabra (sin letras reveladas).
+
+## AT 12 - Teclado en pantalla
+  ### UTs:
+  1. El juego (dominio) debe proveer una colección/lista de las letras que ya fueron intentadas y acertadas.
+  2. El juego (dominio) debe proveer una colección/lista de las letras que ya fueron intentadas y erradas (para que la UI las lea).
+  3. Al iniciar una partida, las colecciones de letras acertadas y erradas deben estar inicialmente vacías.
+  4. El dominio debe clasificar correctamente una letra como acertada o errada de forma mutuamente excluyente (no puede estar en ambas listas a la vez).
+  5. Al procesar palabras con acento (ej. 'Á'), si se adivina la vocal ('A'), esta debe aparecer en la lista de letras acertadas y no en la de erradas.
+  6. Al reiniciar la partida, ambas colecciones de letras deben vaciarse para que la UI pueda reiniciar el estado del teclado.
