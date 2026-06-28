@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3
         with:
           version: 10
 
@@ -36,13 +36,16 @@ jobs:
         run: pnpm install --ignore-scripts --frozen-lockfile
 
       - name: Install Playwright Browsers and system dependencies
+        # sonar-disable-next-line githubactions:S6505
+        # --ignore-scripts omitido intencionalmente: los postinstall scripts son necesarios
+        # para compilar binarios nativos (esbuild, playwright, etc.)
         run: pnpm exec playwright install chromium --with-deps
 
       - name: Run unified test coverage
         run: pnpm run test:coverage
 
       - name: Run SonarCloud analysis
-        uses: SonarSource/sonarqube-scan-action@v5.2.0
+        uses: SonarSource/sonarqube-scan-action@2500896589ef8f7247069a56136f8dc177c27ccf # v5.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
