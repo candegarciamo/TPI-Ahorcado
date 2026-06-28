@@ -37,6 +37,9 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
+        # sonar-disable-next-line githubactions:S6505
+        # --ignore-scripts omitido intencionalmente: los postinstall scripts son necesarios
+        # para compilar binarios nativos (esbuild, playwright, etc.)
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright Browsers and system dependencies
